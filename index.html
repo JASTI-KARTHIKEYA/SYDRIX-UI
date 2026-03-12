@@ -24,17 +24,36 @@
       <div class="logo-sub">GLOBAL TRADE</div>
     </div>
 
-    <ul>
-      <li><a href="#about">Company</a></li>
-      <li><a href="#mission">Mandate</a></li>
-      <li><a href="#compliance">Compliance</a></li>
-      <li><a href="#engagement">Engagement</a></li>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <ul id="navMenu">
+      <li><a href="#about" onclick="closeMenu()">Company</a></li>
+      <li><a href="#mission" onclick="closeMenu()">Mandate</a></li>
+      <li><a href="#compliance" onclick="closeMenu()">Compliance</a></li>
+      <li><a href="#engagement" onclick="closeMenu()">Engagement</a></li>
     </ul>
 
   </nav>
 
 
   <!-- HERO -->
+  <!--
+    To change the hero background image:
+    1. Open style.css
+    2. Find the .hero section (around line 140)
+    3. Comment out the current background and uncomment your preferred option
+
+    Available options:
+    - Option 1: Shipping Containers at Port (Default)
+    - Option 2: Cargo Ship at Sea
+    - Option 3: Container Port Aerial View
+    - Option 4: Global Trade Network
+    - Option 5: Modern Cargo Terminal
+  -->
   <section class="hero">
 
     <div class="hero-content">
@@ -47,6 +66,15 @@
         engagement, we support reliable import and export operations while building
         long-term partnerships that strengthen international commerce.
       </p>
+
+      <div class="hero-buttons">
+        <a href="#engagement" class="hero-btn hero-btn-primary">Start Partnership</a>
+        <a href="#about" class="hero-btn hero-btn-secondary">Learn More</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" onclick="document.querySelector('#about').scrollIntoView({behavior: 'smooth'})">
+      <span>Scroll</span>
     </div>
 
   </section>
@@ -160,6 +188,8 @@
   <footer>
     Sydrix Global Trade · Innovation. Connectivity. Boundless trade
   </footer>
+
+  <script src="script.js"></script>
 
 </body>
 
