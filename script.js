@@ -132,3 +132,43 @@ const statsSection = document.querySelector('.stats-section');
 if (statsSection) {
     statsObserver.observe(statsSection);
 }
+
+// Email Popup Functionality
+const initiateBtn = document.getElementById('initiateDiscussionBtn');
+const emailPopup = document.getElementById('emailPopup');
+const popupClose = document.querySelector('.popup-close');
+
+// Open popup when button is clicked
+if (initiateBtn) {
+    initiateBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        emailPopup.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    });
+}
+
+// Close popup when X is clicked
+if (popupClose) {
+    popupClose.addEventListener('click', () => {
+        emailPopup.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+}
+
+// Close popup when clicking outside the content
+if (emailPopup) {
+    emailPopup.addEventListener('click', (e) => {
+        if (e.target === emailPopup) {
+            emailPopup.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+    });
+}
+
+// Close popup with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && emailPopup.classList.contains('active')) {
+        emailPopup.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+});
