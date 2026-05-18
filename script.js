@@ -16,7 +16,7 @@ function handleScroll() {
     scrollProgress.style.width = `${progress}%`;
 }
 
-window.addEventListener("scroll", handleScroll);
+window.addEventListener("scroll", handleScroll, { passive: true });
 handleScroll();
 
 // Mobile menu
@@ -24,9 +24,30 @@ const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
 if (menuBtn && navLinks) {
-    menuBtn.addEventListener("click", () => {
+    menuBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
         navLinks.classList.toggle("open");
     });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+        if (navLinks.classList.contains("open") &&
+            !navLinks.contains(e.target) &&
+            !menuBtn.contains(e.target)) {
+            navLinks.classList.remove("open");
+        }
+    });
+
+    // Prevent body scroll when menu is open on mobile
+    const observer = new MutationObserver(() => {
+        if (navLinks.classList.contains("open")) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+
+    observer.observe(navLinks, { attributes: true, attributeFilter: ['class'] });
 }
 
 // Smooth scroll and close mobile menu
@@ -94,7 +115,7 @@ function setActiveNavLink() {
     });
 }
 
-window.addEventListener("scroll", setActiveNavLink);
+window.addEventListener("scroll", setActiveNavLink, { passive: true });
 setActiveNavLink();
 
 // Copy email button
@@ -122,3 +143,13 @@ const yearElement = document.getElementById("year");
 if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
 }
+
+// Fix for iOS Safari 100vh issue
+function setVH() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+setVH();
+window.addEventListener('resize', setVH, { passive: true });
+window.addEventListener('orientationchange', setVH, { passive: true });
