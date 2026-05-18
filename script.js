@@ -1,174 +1,124 @@
-// Hamburger Menu Toggle
-function toggleMenu() {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.getElementById('navMenu');
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-}
+// Navbar scroll effect and progress bar
+const navbar = document.getElementById("navbar");
+const scrollProgress = document.getElementById("scrollProgress");
 
-function closeMenu() {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.getElementById('navMenu');
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-}
+function handleScroll() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.getElementById('navMenu');
-    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    }
-});
-
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 100) {
-        nav.classList.add('scrolled');
+    if (scrollTop > 40) {
+        navbar.classList.add("scrolled");
     } else {
-        nav.classList.remove('scrolled');
+        navbar.classList.remove("scrolled");
     }
-});
 
-// Active link highlighting
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    scrollProgress.style.width = `${progress}%`;
+}
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (scrollY >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
+window.addEventListener("scroll", handleScroll);
+handleScroll();
+
+// Mobile menu
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+if (menuBtn && navLinks) {
+    menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
     });
+}
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
+// Smooth scroll and close mobile menu
+const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
-// Smooth scroll
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
+anchorLinks.forEach(link => {
+    link.addEventListener("click", event => {
+        const targetId = link.getAttribute("href");
+        const targetElement = document.querySelector(targetId);
 
-// Hero buttons smooth scroll
-document.querySelectorAll('.hero-btn').forEach(btn => {
-    btn.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(btn.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (!targetElement) return;
+
+        event.preventDefault();
+        navLinks.classList.remove("open");
+
+        const offset = 86;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+
+        window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth"
+        });
     });
 });
 
-// Scroll reveal
-const observer = new IntersectionObserver(entries => {
+// Reveal animation
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.2 });
-
-document.querySelectorAll('.card, .step, .section-text').forEach(el => {
-    el.style.opacity = 0;
-    el.style.transform = 'translateY(40px)';
-    el.style.transition = '0.6s ease';
-    observer.observe(el);
+}, {
+    threshold: 0.16
 });
 
-// Counter Animation for Statistics
-const counters = document.querySelectorAll('.stat-number');
-let hasAnimated = false;
-
-const animateCounters = () => {
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const duration = 2000; // 2 seconds
-        const increment = target / (duration / 16); // 60fps
-        let current = 0;
-
-        const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-                counter.textContent = Math.floor(current);
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target;
-            }
-        };
-
-        updateCounter();
-    });
-};
-
-// Trigger counter animation when stats section is visible
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !hasAnimated) {
-            hasAnimated = true;
-            animateCounters();
-        }
-    });
-}, { threshold: 0.5 });
-
-const statsSection = document.querySelector('.stats-section');
-if (statsSection) {
-    statsObserver.observe(statsSection);
-}
-
-// Email Popup Functionality
-const initiateBtn = document.getElementById('initiateDiscussionBtn');
-const emailPopup = document.getElementById('emailPopup');
-const popupClose = document.querySelector('.popup-close');
-
-// Open popup when button is clicked
-if (initiateBtn) {
-    initiateBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        emailPopup.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    });
-}
-
-// Close popup when X is clicked
-if (popupClose) {
-    popupClose.addEventListener('click', () => {
-        emailPopup.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Restore scrolling
-    });
-}
-
-// Close popup when clicking outside the content
-if (emailPopup) {
-    emailPopup.addEventListener('click', (e) => {
-        if (e.target === emailPopup) {
-            emailPopup.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-    });
-}
-
-// Close popup with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && emailPopup.classList.contains('active')) {
-        emailPopup.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Restore scrolling
-    }
+revealElements.forEach(element => {
+    revealObserver.observe(element);
 });
+
+// Active nav link on scroll
+const sections = document.querySelectorAll("section[id], header[id]");
+const navItems = document.querySelectorAll(".nav-links a");
+
+function setActiveNavLink() {
+    let currentSection = "";
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 160;
+
+        if (window.scrollY >= sectionTop) {
+            currentSection = section.getAttribute("id");
+        }
+    });
+
+    navItems.forEach(link => {
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === `#${currentSection}`) {
+            link.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", setActiveNavLink);
+setActiveNavLink();
+
+// Copy email button
+const copyEmailButton = document.getElementById("copyEmail");
+const email = "contact-us@sydrixglobal.com";
+
+if (copyEmailButton) {
+    copyEmailButton.addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(email);
+            copyEmailButton.textContent = "Email Copied";
+
+            setTimeout(() => {
+                copyEmailButton.textContent = "Copy Email";
+            }, 1600);
+        } catch (error) {
+            copyEmailButton.textContent = email;
+        }
+    });
+}
+
+// Footer year
+const yearElement = document.getElementById("year");
+
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+}
