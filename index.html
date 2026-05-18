@@ -3,207 +3,375 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Sydrix Global Trade</title>
+  <title>Sydrix Global Trade | Research-Led Global Sourcing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Sydrix Global Trade is a research-led sourcing and trade development company focused on product research, supplier evaluation, market feasibility, and global trade partnerships.">
 
   <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- NAVBAR -->
-  <nav>
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="logo" aria-label="Sydrix Global Trade Home">
+      <img src="sydrix-wordmark-option5-white.png" alt="Sydrix Global Trade" class="logo-img">
+    </a>
 
-    <div class="logo">
-      <div class="logo-main">SYDRIX</div>
-      <div class="logo-sub">GLOBAL TRADE</div>
-    </div>
-
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <ul id="navMenu">
-      <li><a href="#about" onclick="closeMenu()">Company</a></li>
-      <li><a href="#mission" onclick="closeMenu()">Mandate</a></li>
-      <li><a href="#compliance" onclick="closeMenu()">Compliance</a></li>
-      <li><a href="#engagement" onclick="closeMenu()">Engagement</a></li>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#focus">Focus</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#insights">Insights</a></li>
+      <li><a href="#compliance">Compliance</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
 
+    <a href="mailto:contact-us@sydrixglobal.com" class="nav-cta">Start Discussion</a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
-
   <!-- HERO -->
-  <!--
-    To change the hero background image:
-    1. Open style.css
-    2. Find the .hero section (around line 140)
-    3. Comment out the current background and uncomment your preferred option
+  <header class="hero" id="home">
+    <div class="hero-bg-shape shape-one"></div>
+    <div class="hero-bg-shape shape-two"></div>
 
-    Available options:
-    - Option 1: Shipping Containers at Port (Default)
-    - Option 2: Cargo Ship at Sea
-    - Option 3: Container Port Aerial View
-    - Option 4: Global Trade Network
-    - Option 5: Modern Cargo Terminal
-  -->
-  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content reveal">
+        <div class="eyebrow">India-based · Research-led · Global sourcing</div>
 
-    <div class="hero-content">
-      <h2>Facilitating Trusted Global Trade</h2>
+        <h1>
+          Global trade starts with
+          <span>verified research.</span>
+        </h1>
 
+        <p>
+          Sydrix Global Trade is building structured import-export and sourcing channels through product research,
+          supplier evaluation, market feasibility study, and disciplined trade engagement.
+        </p>
+
+        <div class="hero-actions">
+          <a href="mailto:contact-us@sydrixglobal.com" class="btn primary-btn">Start a Trade Discussion</a>
+          <a href="#process" class="btn secondary-btn">View Our Process</a>
+        </div>
+
+        <div class="trust-row">
+          <div>
+            <strong>Research First</strong>
+            <small>Before trade execution</small>
+          </div>
+          <div>
+            <strong>Supplier Checks</strong>
+            <small>Before serious negotiation</small>
+          </div>
+          <div>
+            <strong>Cost Clarity</strong>
+            <small>Before product selection</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <div class="card-label">Current Operating Status</div>
+        <h3>Trade Development Desk</h3>
+
+        <p>
+          We are currently evaluating product categories, supplier capabilities, landed costs, compliance requirements,
+          and buyer-side market potential.
+        </p>
+
+        <div class="status-list">
+          <div><span></span>Product research active</div>
+          <div><span></span>Supplier verification framework</div>
+          <div><span></span>India market feasibility study</div>
+          <div><span></span>Global sourcing network development</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- APPROACH -->
+  <section id="approach" class="section">
+    <div class="section-heading reveal">
+      <span class="section-kicker">Company Approach</span>
+      <h2>Research-first trade development</h2>
       <p>
-        Sydrix Global Trade is an international trading and sourcing organization that
-        connects manufacturers, suppliers, and markets across global supply chains.
-        By combining market intelligence, supplier verification, and disciplined trade
-        engagement, we support reliable import and export operations while building
-        long-term partnerships that strengthen international commerce.
+        International trade is not only about finding a product. A product must be checked for quality, supplier
+        reliability, demand, logistics cost, duty, GST, documentation, packaging, and margin before serious execution.
       </p>
-
-      <div class="hero-buttons">
-        <a href="#engagement" class="hero-btn hero-btn-primary">Start Partnership</a>
-        <a href="#about" class="hero-btn hero-btn-secondary">Learn More</a>
-      </div>
     </div>
 
-    <div class="scroll-indicator" onclick="document.querySelector('#about').scrollIntoView({behavior: 'smooth'})">
-      <span>Scroll</span>
-    </div>
-
-  </section>
-
-
-  <!-- COMPANY -->
-  <section id="about">
-
-    <h2 class="section-title">Company Overview</h2>
-
-    <p class="section-text">
-      Sydrix Global Trade is a global sourcing and import development company focused on
-      bridging international manufacturers with opportunities in the Indian market.
-      Our operations are built on research-driven product evaluation, supplier credibility
-      verification, and long-term relationship building with trusted manufacturers
-      and logistics partners.
-
-      We aim to create reliable import channels by combining market intelligence,
-      structured supplier assessment, and disciplined trade practices. Our objective
-      is not only to source products, but to build sustainable global trade networks
-      that deliver long-term value to partners and customers.
-    </p>
-
-  </section>
-
-
-  <!-- OPERATING MANDATE -->
-  <section id="mission">
-
-    <h2 class="section-title">Operating Mandate</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <h3>Market & Product Research</h3>
+    <div class="cards three-grid">
+      <div class="card reveal">
+        <div class="icon-box">01</div>
+        <h3>Product Research</h3>
         <p>
-          Comprehensive analysis of product demand, competitive pricing,
-          market feasibility, and growth potential within the Indian market.
+          We study product demand, pricing, material options, packaging standards, competitor availability, and
+          commercial feasibility before shortlisting opportunities.
         </p>
       </div>
 
-      <div class="card">
-        <h3>Supplier Verification</h3>
+      <div class="card reveal">
+        <div class="icon-box">02</div>
+        <h3>Supplier Evaluation</h3>
         <p>
-          Identification and evaluation of manufacturers based on production
-          capacity, certifications, reliability, and international trade readiness.
+          We evaluate suppliers based on MOQ, pricing, export readiness, certifications, communication quality,
+          production capability, and sample availability.
         </p>
       </div>
 
-      <div class="card">
-        <h3>Strategic Trade Partnerships</h3>
+      <div class="card reveal">
+        <div class="icon-box">03</div>
+        <h3>Trade Feasibility</h3>
         <p>
-          Building long-term sourcing relationships with manufacturers and
-          trade partners to ensure consistent supply and operational stability.
+          We estimate landed cost, customs duty, GST, logistics charges, documentation needs, quality risks, and
+          expected
+          margin before moving forward.
         </p>
       </div>
-
     </div>
-
   </section>
 
+  <!-- FOCUS -->
+  <section id="focus" class="section dark-section">
+    <div class="section-heading reveal">
+      <span class="section-kicker">Current Focus</span>
+      <h2>Building practical sourcing intelligence</h2>
+      <p>
+        Sydrix is currently focused on identifying commercially viable products and reliable trade partners across India
+        and selected global sourcing markets.
+      </p>
+    </div>
+
+    <div class="focus-grid">
+      <div class="focus-card reveal">
+        <h3>Consumer Products</h3>
+        <p>Packaging, lifestyle products, general merchandise, and product categories suitable for Indian distribution.
+        </p>
+      </div>
+
+      <div class="focus-card reveal">
+        <h3>Agri & Food Trade</h3>
+        <p>Exploring export-ready Indian products and buyer-side opportunities in international markets.</p>
+      </div>
+
+      <div class="focus-card reveal">
+        <h3>Global Sourcing</h3>
+        <p>Studying supplier markets such as Vietnam, China, UAE, and other trade hubs for sourcing opportunities.</p>
+      </div>
+
+      <div class="focus-card reveal">
+        <h3>India Market Entry</h3>
+        <p>Helping evaluate whether imported products can fit Indian demand, pricing, logistics, and compliance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="section">
+    <div class="section-heading reveal">
+      <span class="section-kicker">How We Work</span>
+      <h2>Our trade development process</h2>
+      <p>
+        A structured process helps reduce risk. Every product or supplier opportunity should pass through basic
+        commercial, quality, and compliance checks before execution.
+      </p>
+    </div>
+
+    <div class="process-timeline">
+      <div class="process-step reveal">
+        <div class="step-number">1</div>
+        <div>
+          <h3>Identify Product Opportunity</h3>
+          <p>Shortlist products based on demand, price gap, sourcing availability, quality levels, and market potential.
+          </p>
+        </div>
+      </div>
+
+      <div class="process-step reveal">
+        <div class="step-number">2</div>
+        <div>
+          <h3>Evaluate Suppliers</h3>
+          <p>Check supplier profile, catalogue, MOQ, payment terms, sample policy, export experience, and
+            certifications.</p>
+        </div>
+      </div>
+
+      <div class="process-step reveal">
+        <div class="step-number">3</div>
+        <div>
+          <h3>Calculate Landed Cost</h3>
+          <p>Estimate product cost, freight, insurance, duty, GST, CHA charges, port charges, local transport, and
+            margin.</p>
+        </div>
+      </div>
+
+      <div class="process-step reveal">
+        <div class="step-number">4</div>
+        <div>
+          <h3>Check Compliance</h3>
+          <p>Review HS code, documentation, product certification, packaging requirements, import/export rules, and
+            risk.</p>
+        </div>
+      </div>
+
+      <div class="process-step reveal">
+        <div class="step-number">5</div>
+        <div>
+          <h3>Begin Trade Engagement</h3>
+          <p>Start serious discussions with suppliers, buyers, freight forwarders, customs brokers, and trade partners.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section id="insights" class="section light-section">
+    <div class="section-heading reveal">
+      <span class="section-kicker">Trade Insights</span>
+      <h2>Real business learning, not empty claims</h2>
+      <p>
+        Sydrix aims to publish practical trade notes, product research, supplier checklists, and sourcing observations
+        as part of our business development journey.
+      </p>
+    </div>
+
+    <div class="insight-grid">
+      <article class="insight-card reveal">
+        <span>Product Research</span>
+        <h3>How we evaluate a product before importing</h3>
+        <p>
+          Demand, supplier price, MOQ, landed cost, selling price, margin, certification, and market risk must be
+          checked
+          before selecting a product.
+        </p>
+      </article>
+
+      <article class="insight-card reveal">
+        <span>Supplier Verification</span>
+        <h3>Supplier checklist before negotiation</h3>
+        <p>
+          Catalogue, factory details, sample policy, certifications, export history, payment terms, packaging standards,
+          and inspection support are key.
+        </p>
+      </article>
+
+      <article class="insight-card reveal">
+        <span>Costing</span>
+        <h3>Why product price is not landed cost</h3>
+        <p>
+          A product can look cheap at supplier price level but become expensive after freight, customs duty, GST, local
+          logistics, and handling charges.
+        </p>
+      </article>
+    </div>
+  </section>
 
   <!-- COMPLIANCE -->
-  <section id="compliance">
+  <section id="compliance" class="section">
+    <div class="section-heading reveal">
+      <span class="section-kicker">Compliance Awareness</span>
+      <h2>Documentation and regulatory clarity matter</h2>
+      <p>
+        Trade credibility depends on correct documentation, product classification, customs process, payment terms, and
+        transparent communication with partners.
+      </p>
+    </div>
 
-    <h2 class="section-title">Compliance</h2>
+    <div class="compliance-layout">
+      <div class="compliance-card reveal">
+        <h3>Basic documents we consider</h3>
+        <ul>
+          <li>Commercial invoice</li>
+          <li>Packing list</li>
+          <li>Bill of lading or airway bill</li>
+          <li>Certificate of origin, if required</li>
+          <li>Inspection certificate, if required</li>
+          <li>Import/export declarations</li>
+        </ul>
+      </div>
 
-    <p class="section-text">
-      International trade requires strict adherence to regulatory standards,
-      documentation accuracy, and import compliance procedures. Sydrix Global Trade
-      prioritizes structured evaluation of customs regulations, certification
-      requirements, and documentation protocols to ensure smooth and compliant
-      import operations.
-    </p>
-
-  </section>
-
-
-  <!-- ENGAGEMENT -->
-  <section id="engagement">
-
-    <h2 class="section-title">Engagement</h2>
-
-    <p class="section-text">
-      We engage with global manufacturers, sourcing agents, and logistics partners
-      through professional and transparent communication. Our approach focuses on
-      long-term collaboration, clear commercial alignment, and the development of
-      trust-based partnerships that support sustainable international trade.
-    </p>
-
-  </section>
-
-
-  <!-- CTA -->
-  <section class="cta-section">
-
-    <h3>Start a Trade Partnership</h3>
-
-    <p>
-      If you are a manufacturer, sourcing partner, or logistics provider
-      interested in exploring collaboration opportunities with Sydrix Global Trade,
-      we welcome professional discussions to build long-term global trade relationships.
-    </p>
-
-    <a class="cta-btn" id="initiateDiscussionBtn">Initiate Discussion</a>
-
-  </section>
-
-
-  <!-- EMAIL POPUP MODAL -->
-  <div id="emailPopup" class="popup-overlay">
-    <div class="popup-content">
-      <span class="popup-close">&times;</span>
-      <h3>Contact Us</h3>
-      <p>Reach out to us at:</p>
-      <div class="email-display">
-        <a href="mailto:contact-us@sydrixglobal.com">contact-us@sydrixglobal.com</a>
+      <div class="compliance-card reveal">
+        <h3>Key checks before trade</h3>
+        <ul>
+          <li>HS code classification</li>
+          <li>Customs duty and GST impact</li>
+          <li>Product certification needs</li>
+          <li>Packaging and labelling rules</li>
+          <li>Supplier export readiness</li>
+          <li>Payment and delivery terms</li>
+        </ul>
       </div>
     </div>
-  </div>
+  </section>
 
+  <!-- ENGAGEMENT -->
+  <section class="section dark-section">
+    <div class="section-heading reveal">
+      <span class="section-kicker">Partnership</span>
+      <h2>Open to serious trade discussions</h2>
+      <p>
+        We welcome professional conversations with suppliers, manufacturers, buyers, logistics partners, customs
+        brokers,
+        inspection agencies, and sourcing partners.
+      </p>
+    </div>
+
+    <div class="partner-strip reveal">
+      <div>Manufacturers</div>
+      <div>Suppliers</div>
+      <div>Buyers</div>
+      <div>Freight Forwarders</div>
+      <div>Customs Brokers</div>
+      <div>Inspection Partners</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="contact-card reveal">
+      <span class="section-kicker">Contact</span>
+      <h2>Start a professional trade discussion</h2>
+      <p>
+        If you are a manufacturer, buyer, sourcing partner, logistics provider, or trade professional, contact Sydrix
+        Global Trade for structured business discussions.
+      </p>
+
+      <div class="contact-actions">
+        <a href="mailto:contact-us@sydrixglobal.com" class="btn primary-btn">Email Sydrix</a>
+        <button class="btn secondary-btn" id="copyEmail" type="button">Copy Email</button>
+      </div>
+
+      <div class="email-line">contact-us@sydrixglobal.com</div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
-    Sydrix Global Trade · Innovation. Connectivity. Boundless trade
+    <div class="footer-logo-box">
+      <img src="sydrix-wordmark-option5-white.png" alt="Sydrix Global Trade" class="footer-logo-img">
+    </div>
+
+    <p>Research-led sourcing · Supplier evaluation · Trade development</p>
+
+    <small>© <span id="year"></span> Sydrix Global Trade. All rights reserved.</small>
   </footer>
-
-  <script src="script.js"></script>
-
 </body>
 
 </html>
