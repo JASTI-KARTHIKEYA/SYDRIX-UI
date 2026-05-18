@@ -30,6 +30,15 @@ body {
   background: var(--white);
   line-height: 1.7;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent horizontal scroll on mobile */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 a {
@@ -150,8 +159,8 @@ button {
 
 .menu-btn {
   display: none;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   border: 0;
   border-radius: 14px;
   background: var(--accent);
@@ -160,6 +169,7 @@ button {
   justify-content: center;
   flex-direction: column;
   gap: 5px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .menu-btn span {
@@ -181,6 +191,7 @@ button {
     radial-gradient(circle at 85% 20%, rgba(242, 140, 24, 0.35), transparent 30%),
     linear-gradient(135deg, rgba(6, 21, 33, 0.94), rgba(11, 60, 93, 0.86)),
     url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80") center/cover;
+  background-attachment: scroll;
   overflow: hidden;
 }
 
@@ -221,11 +232,13 @@ button {
 
 .hero h1 {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(46px, 7vw, 86px);
-  line-height: 0.95;
-  letter-spacing: -3px;
+  font-size: clamp(32px, 7vw, 86px);
+  line-height: 1.05;
+  letter-spacing: clamp(-2px, -0.5vw, -3px);
   max-width: 850px;
   margin-bottom: 28px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .hero h1 span {
@@ -259,6 +272,8 @@ button {
   cursor: pointer;
   transition: 0.25s ease;
   border: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .primary-btn {
@@ -289,6 +304,7 @@ button {
   gap: 18px;
   margin-top: 46px;
   max-width: 850px;
+  width: 100%;
 }
 
 .trust-row div {
@@ -722,15 +738,29 @@ footer small {
 .reveal {
   opacity: 0;
   transform: translateY(34px);
-  transition: 0.75s ease;
+  transition: opacity 0.75s ease, transform 0.75s ease;
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
 
 /* RESPONSIVE */
+
+/* Ensure all containers don't overflow on mobile */
+.hero-grid,
+.cards,
+.three-grid,
+.focus-grid,
+.insight-grid,
+.compliance-layout,
+.process-timeline,
+.partner-strip {
+  max-width: 100%;
+}
 
 @media (max-width: 1180px) {
   .nav-links {
@@ -800,6 +830,7 @@ footer small {
     pointer-events: none;
     transform: translateY(-16px);
     transition: 0.25s ease;
+    z-index: 1400;
   }
 
   .nav-links.open {
@@ -810,6 +841,8 @@ footer small {
 
   .nav-links a {
     color: var(--text);
+    padding: 8px 0;
+    width: 100%;
   }
 
   .hero {
@@ -823,7 +856,7 @@ footer small {
   }
 
   .hero h1 {
-    letter-spacing: -1.5px;
+    letter-spacing: clamp(-2px, -0.3vw, -1.5px);
   }
 
   .hero-content p,
@@ -844,6 +877,11 @@ footer small {
   .process-step:hover {
     transform: translateY(-5px);
   }
+
+  /* Improve touch targets on mobile */
+  .nav-links a::after {
+    bottom: 0;
+  }
 }
 
 @media (max-width: 520px) {
@@ -861,6 +899,7 @@ footer small {
 
   .btn {
     width: 100%;
+    min-height: 48px;
   }
 
   .section-heading {
@@ -881,5 +920,56 @@ footer small {
 
   .footer-logo-img {
     width: 180px;
+  }
+
+  .hero {
+    padding: 110px 5% 60px;
+  }
+
+  .section,
+  .contact-section {
+    padding: 70px 5%;
+  }
+
+  .card,
+  .focus-card,
+  .insight-card,
+  .compliance-card,
+  .process-step {
+    padding: 24px;
+  }
+
+  .section-heading h2,
+  .contact-card h2 {
+    font-size: clamp(28px, 8vw, 58px);
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 375px) {
+  .navbar {
+    padding: 16px 4%;
+  }
+
+  .logo-img,
+  .navbar.scrolled .logo-img {
+    width: 130px;
+  }
+
+  .menu-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 9vw, 32px);
+  }
+
+  .trust-row {
+    gap: 12px;
+  }
+
+  .trust-row div {
+    padding: 14px;
   }
 }
