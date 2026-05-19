@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sydrix Global Trade | Blogs & Insights</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="description"
+    content="Blogs and practical trade insights from Sydrix Global Trade on sourcing, supplier checks, costing, and compliance.">
+  <meta name="theme-color" content="#071f34">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="blogs.js" defer></script>
+</head>
+
+<body class="blog-page">
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html#home" class="logo" aria-label="Sydrix Global Trade Home">
+      <img src="sydrix-wordmark-option5-white.png" alt="Sydrix Global Trade" class="logo-img">
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="index.html#focus">Focus</a></li>
+      <li><a href="index.html#process">Process</a></li>
+      <li><a href="index.html#insights">Insights</a></li>
+      <li><a href="#blogs">Blogs</a></li>
+      <li><a href="index.html#compliance">Compliance</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <a href="mailto:contact-us@sydrixglobal.com" class="nav-cta">Start Discussion</a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- BLOG HERO -->
+  <header class="blog-hero" id="blogs">
+    <div class="section-heading reveal">
+      <span class="section-kicker">Blogs & Insights</span>
+      <h1>Research notes from practical trade work.</h1>
+      <p>
+        Short, practical posts on product research, supplier checks, costing, and compliance as we build structured
+        sourcing and trade channels.
+      </p>
+    </div>
+  </header>
+
+  <!-- BLOG LIST -->
+  <main>
+    <section class="section">
+      <div class="section-heading reveal">
+        <h2>Latest updates</h2>
+        <p>New blogs are loaded whenever this page is opened.</p>
+      </div>
+
+      <div id="blogsContainer" class="blog-grid">
+        <p class="blog-loading" id="blogsLoading">Loading blogs...</p>
+      </div>
+
+      <p class="blog-error" id="blogsError" hidden></p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+      <div class="contact-card reveal">
+        <span class="section-kicker">Contact</span>
+        <h2>Start a professional trade discussion</h2>
+        <p>
+          If you are a manufacturer, buyer, sourcing partner, logistics provider, or trade professional, contact Sydrix
+          Global Trade for structured business discussions.
+        </p>
+
+        <div class="contact-actions">
+          <a href="mailto:contact-us@sydrixglobal.com" class="btn primary-btn">Email Sydrix</a>
+          <button class="btn secondary-btn" id="copyEmail" type="button">Copy Email</button>
+        </div>
+
+        <div class="email-line">contact-us@sydrixglobal.com</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo-box">
+      <img src="sydrix-wordmark-option5-white.png" alt="Sydrix Global Trade" class="footer-logo-img">
+    </div>
+
+    <p>Research-led sourcing · Supplier evaluation · Trade development</p>
+
+    <small>© <span id="year"></span> Sydrix Global Trade. All rights reserved.</small>
+  </footer>
+</body>
+
+</html>
