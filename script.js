@@ -120,6 +120,7 @@ setActiveNavLink();
 
 // Copy email button
 const copyEmailButton = document.getElementById("copyEmail");
+const copyEmailBlogButton = document.getElementById("copyEmailBlog");
 const email = "contact-us@sydrixglobal.com";
 
 if (copyEmailButton) {
@@ -133,6 +134,21 @@ if (copyEmailButton) {
             }, 1600);
         } catch (error) {
             copyEmailButton.textContent = email;
+        }
+    });
+}
+
+if (copyEmailBlogButton) {
+    copyEmailBlogButton.addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(email);
+            copyEmailBlogButton.textContent = "Email Copied";
+
+            setTimeout(() => {
+                copyEmailBlogButton.textContent = "Copy Email";
+            }, 1600);
+        } catch (error) {
+            copyEmailBlogButton.textContent = email;
         }
     });
 }
